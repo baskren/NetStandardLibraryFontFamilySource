@@ -30,17 +30,17 @@ namespace NetStandardAppDataSource.UWP
             if (!File.Exists(fontPath))
             {
 #if NETSTANDARD
-                var embeddedResourceId = "NetStandardAppDataSource.Pacifico.ttf";
+                var embeddedResourceId = "NetStandardApp.Pacifico.ttf";
 #else
-                var embeddedResourceId = "Pcl.App.PclApp.Pacifico.ttf";
+                var embeddedResourceId = "PclApp.Pacifico.ttf";
 #endif
-                using (var stream = Xamarin.Forms.Application.Current.GetType().GetTypeInfo().Assembly.GetManifestResourceStream(embeddedResourceId)) 
+                using (var stream = Xamarin.Forms.Application.Current.GetType().GetTypeInfo().Assembly.GetManifestResourceStream(embeddedResourceId))
                 {
                     using (var fileStream = new FileStream(fontPath, FileMode.Create))
                     {
                         stream.Seek(0, SeekOrigin.Begin);
                         stream.CopyTo(fileStream);
-                        System.Diagnostics.Debug.WriteLine("["+GetType()+"] DownloadTask: file written [" + fontPath + "]");
+                        System.Diagnostics.Debug.WriteLine("[" + GetType() + "] DownloadTask: file written [" + fontPath + "]");
                     }
                 }
             }
@@ -49,14 +49,14 @@ namespace NetStandardAppDataSource.UWP
             else
                 System.Diagnostics.Debug.WriteLine("[" + GetType() + "] Font file exists at: " + fontPath);
             var textBlock = Control as Windows.UI.Xaml.Controls.TextBlock;
-            var fontFamilyName = "ms-appdata:///local/"+hashedFileName+"#Pacifico";
+            var fontFamilyName = "ms-appdata:///local/" + hashedFileName + "#Pacifico";
             System.Diagnostics.Debug.WriteLine("[" + GetType() + "] FontFamilyName: " + fontFamilyName);
             textBlock.FontFamily = new Windows.UI.Xaml.Media.FontFamily(fontFamilyName);
         }
 
         protected override void OnDetached()
         {
-         //   throw new NotImplementedException();
+            //   throw new NotImplementedException();
         }
     }
 }
