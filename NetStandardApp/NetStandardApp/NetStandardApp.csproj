@@ -27,4 +27,7 @@
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Pacifico.ttf" />
+  </ItemGroup>
 </Project>
