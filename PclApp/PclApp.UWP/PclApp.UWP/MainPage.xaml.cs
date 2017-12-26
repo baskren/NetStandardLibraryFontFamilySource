@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace PclAppDataSource.UWP
+namespace PclApp.UWP
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -24,10 +24,9 @@ namespace PclAppDataSource.UWP
     {
         public MainPage()
         {
-            // below this existing line
             this.InitializeComponent();
-            // add this line
-            LoadApplication(new PclAppDataSource.App());
+
+            LoadApplication(new PclApp.App());
         }
     }
 }

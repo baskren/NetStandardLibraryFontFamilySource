@@ -7,14 +7,14 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="e48b5eca-4591-412f-a0de-6e853cfc5936"
+    Name="e7aee9a6-1572-4d58-a159-b4b083142a39"
     Publisher="CN=ben"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="e48b5eca-4591-412f-a0de-6e853cfc5936" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="e7aee9a6-1572-4d58-a159-b4b083142a39" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>PclAppDataSource.UWP</DisplayName>
+    <DisplayName>PclApp.UWP</DisplayName>
     <PublisherDisplayName>ben</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="PclAppDataSource.UWP.App">
+      EntryPoint="PclApp.UWP.App">
       <uap:VisualElements
-        DisplayName="PclAppDataSource.UWP"
+        DisplayName="PclApp.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="PclAppDataSource.UWP"
+        Description="PclApp.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

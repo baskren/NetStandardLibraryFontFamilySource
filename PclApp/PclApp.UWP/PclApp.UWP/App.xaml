@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="PclAppDataSource.UWP.App"
+    x:Class="PclApp.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PclAppDataSource.UWP"
+    xmlns:local="using:PclApp.UWP"
     RequestedTheme="Light">
 
 </Application>

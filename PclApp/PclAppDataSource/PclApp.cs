@@ -2,14 +2,14 @@
 
 using Xamarin.Forms;
 
-namespace PclAppDataSource
+namespace PclApp
 {
     public class App : Application
     {
         public App()
         {
             // The root page of your application
-            MainPage = new PclAppDataSource.MainPage();
+            MainPage = new PclApp.MainPage();
         }
 
         protected override void OnStart()

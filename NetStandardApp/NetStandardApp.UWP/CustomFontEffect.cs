@@ -29,7 +29,12 @@ namespace NetStandardAppDataSource.UWP
             System.Diagnostics.Debug.WriteLine("[" + GetType() + "] fontPath: " + fontPath);
             if (!File.Exists(fontPath))
             {
-                using (var stream = Xamarin.Forms.Application.Current.GetType().GetTypeInfo().Assembly.GetManifestResourceStream("NetStandardAppDataSource.Pacifico.ttf")) 
+#if NETSTANDARD
+                var embeddedResourceId = "NetStandardAppDataSource.Pacifico.ttf";
+#else
+                var embeddedResourceId = "Pcl.App.PclApp.Pacifico.ttf";
+#endif
+                using (var stream = Xamarin.Forms.Application.Current.GetType().GetTypeInfo().Assembly.GetManifestResourceStream(embeddedResourceId)) 
                 {
                     using (var fileStream = new FileStream(fontPath, FileMode.Create))
                     {

@@ -177,9 +177,9 @@
       <Project>{0fab9926-e1c3-4193-8174-8a834c4f639d}</Project>
       <Name>SupportLibrary.NetStandard</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NetStandardSupportLib\SupportLibrary.UWP\SupportLibrary.UWP.csproj">
+    <ProjectReference Include="..\..\NetStandardSupportLib\SupportLibrary.UWP\SupportLibrary.NetStandard.UWP.csproj">
       <Project>{48b2c1d8-90ce-4c93-a6df-10fabf28bef2}</Project>
-      <Name>SupportLibrary.UWP</Name>
+      <Name>SupportLibrary.NetStandard.UWP</Name>
     </ProjectReference>
     <ProjectReference Include="..\NetStandardApp\NetStandardApp.csproj">
       <Project>{d3b90779-0591-4510-bb9e-419f52cc9de6}</Project>
