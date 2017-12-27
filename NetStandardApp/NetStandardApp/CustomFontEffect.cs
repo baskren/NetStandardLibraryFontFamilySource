@@ -11,12 +11,7 @@ namespace NetStandardApp
 {
     class CustomFontEffect : RoutingEffect
     {
-        protected CustomFontEffect()
-#if __PCL__
-        : base("PclApp.CustomFontEffect")
-#else
-        :base("NetStandardApp.CustomFontEffect")
-#endif
+        protected CustomFontEffect() : base("App.CustomFontEffect")
         {
         }
 

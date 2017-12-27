@@ -3,35 +3,50 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-#if __PCL__
-namespace PclApp
-#else
+#if NETSTANDARD
 namespace NetStandardApp
+#else
+namespace PclApp
 #endif
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
-            //InitializeComponent();
+
             var localLabel = new Label
             {
                 Text = "This is the locaLabel"
             };
             CustomFontEffect.ApplyTo(localLabel);
+            
 
             var supportLabel = new Label
             {
                 Text = "This is the supportLabel"
             };
-            SupportLibrary.CustomFontEffect.ApplyTo(localLabel);
+            SupportLibrary.CustomFontEffect.ApplyTo(supportLabel);
+
+            var entry = new Entry
+            {
+                Text = "This is the entry"
+            };
+            SupportLibrary.CustomFontEffect.ApplyTo(entry);
+
+            var button = new Button
+            {
+                Text = "This is a button"
+            };
+            SupportLibrary.CustomFontEffect.ApplyTo(button);
 
             var stack = new StackLayout
             {
                 Children =
                 {
                     localLabel,
-                    supportLabel
+                    supportLabel,
+                    entry,
+                    button
                 }
             };
             Content = stack;

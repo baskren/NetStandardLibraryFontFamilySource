@@ -19,15 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\NetStandardSupportLib\SupportLibrary.NetStandard\SupportLibrary.NetStandard.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pacifico.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NetStandardSupportLib\SupportLibrary.NetStandard\SupportLibrary.NetStandard.csproj" />
   </ItemGroup>
 </Project>

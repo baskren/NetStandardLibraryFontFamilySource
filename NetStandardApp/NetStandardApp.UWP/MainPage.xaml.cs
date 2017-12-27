@@ -21,7 +21,7 @@ namespace NetStandardAppDataSource.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new NetStandardAppDataSource.App());
+            LoadApplication(new NetStandardApp.App());
         }
     }
 }

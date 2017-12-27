@@ -7,11 +7,11 @@ namespace SupportLibrary
 {
     public class CustomFontEffect : RoutingEffect
     {
-        protected CustomFontEffect() : base("SupportLibrary.CustomFontEffect")
+        protected CustomFontEffect() : base("Lib.CustomFontEffect")
         {
         }
 
-        static public void ApplyTo(Xamarin.Forms.Label label)
+        static public void ApplyTo(Xamarin.Forms.VisualElement label)
         {
             var effect = new CustomFontEffect();
             label.Effects.Add(effect);

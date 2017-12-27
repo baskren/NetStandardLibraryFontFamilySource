@@ -7,8 +7,8 @@
     <ProjectGuid>{B3E3BF2A-8FE7-4482-900B-E0298E86D091}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SupportLibrary.UWP</RootNamespace>
-    <AssemblyName>SupportLibrary.UWP</AssemblyName>
+    <RootNamespace>PclLib.UWP</RootNamespace>
+    <AssemblyName>PclLib.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
@@ -119,6 +119,12 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>2.4.0.280</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SupportLibrary\SupportLibrary.PCL.csproj">
+      <Project>{0bfd3772-a3e7-4cc8-af37-d78488eb09bd}</Project>
+      <Name>SupportLibrary.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

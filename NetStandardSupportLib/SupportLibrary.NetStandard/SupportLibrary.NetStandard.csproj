@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>NetStandardLib</AssemblyName>
+    <RootNamespace>NetStandardLib</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_3;NETSTANDARD;</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

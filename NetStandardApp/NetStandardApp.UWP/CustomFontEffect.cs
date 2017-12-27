@@ -9,13 +9,17 @@ using System.IO;
 using System.Reflection;
 
 #if SUPPORTLIB
-[assembly: ResolutionGroupName("SupportLibrary")]
+[assembly: ResolutionGroupName("Lib")]
 [assembly: ExportEffect(typeof(SupportLibrary.UWP.CustomFontEffect), "CustomFontEffect")]
 namespace SupportLibrary.UWP
+#elif NETSTANDARD
+[assembly: ResolutionGroupName("App")]
+[assembly: ExportEffect(typeof(NetStandardApp.UWP.CustomFontEffect), "CustomFontEffect")]
+namespace NetStandardApp.UWP
 #else
-[assembly: ResolutionGroupName("NetStandardDataSource")]
-[assembly: ExportEffect(typeof(NetStandardAppDataSource.UWP.CustomFontEffect), "CustomFontEffect")]
-namespace NetStandardAppDataSource.UWP
+[assembly: ResolutionGroupName("App")]
+[assembly: ExportEffect(typeof(PclApp.UWP.CustomFontEffect), "CustomFontEffect")]
+namespace PclApp.UWP
 #endif
 
 {
@@ -23,17 +27,22 @@ namespace NetStandardAppDataSource.UWP
     {
         protected override void OnAttached()
         {
-            var appDataPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
-            var hashedFileName = "02fe60e0da81514d145d946ab9ad9b97";
-            var fontPath = Path.Combine(appDataPath, hashedFileName);
-            System.Diagnostics.Debug.WriteLine("[" + GetType() + "] fontPath: " + fontPath);
-            if (!File.Exists(fontPath))
-            {
 #if NETSTANDARD
-                var embeddedResourceId = "NetStandardApp.Pacifico.ttf";
+            var embeddedResourceId = "NetStandardApp.Pacifico.ttf";
 #else
                 var embeddedResourceId = "PclApp.Pacifico.ttf";
 #endif
+            var appDataPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+            //var appDataPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path,"EmbeddedResourceCache");
+            //var cachedFileName = "Pacifico.ttf";
+            //var cachedFileName = "02fe60e0da81514d145d946ab9ad9b97";
+            var cachedFileName = embeddedResourceId;
+            var fontPath = Path.Combine(appDataPath, cachedFileName);
+            System.Diagnostics.Debug.WriteLine("[" + GetType() + "] fontPath: " + fontPath);
+            if (!File.Exists(fontPath))
+            {
+                if (!Directory.Exists(appDataPath))
+                    Directory.CreateDirectory(appDataPath);
                 using (var stream = Xamarin.Forms.Application.Current.GetType().GetTypeInfo().Assembly.GetManifestResourceStream(embeddedResourceId))
                 {
                     using (var fileStream = new FileStream(fontPath, FileMode.Create))
@@ -48,10 +57,26 @@ namespace NetStandardAppDataSource.UWP
                 throw new Exception("[" + GetType() + "] Font file not found");
             else
                 System.Diagnostics.Debug.WriteLine("[" + GetType() + "] Font file exists at: " + fontPath);
-            var textBlock = Control as Windows.UI.Xaml.Controls.TextBlock;
-            var fontFamilyName = "ms-appdata:///local/" + hashedFileName + "#Pacifico";
+
+            var fontFamilyName = "ms-appdata:///local/" + cachedFileName + "#Pacifico";
             System.Diagnostics.Debug.WriteLine("[" + GetType() + "] FontFamilyName: " + fontFamilyName);
-            textBlock.FontFamily = new Windows.UI.Xaml.Media.FontFamily(fontFamilyName);
+
+            var fontFamilyProperty = GetPropertyInfo(Control.GetType(), "FontFamily");
+            if (fontFamilyProperty!=null)
+                fontFamilyProperty.SetValue(Control, new Windows.UI.Xaml.Media.FontFamily(fontFamilyName));
+            else
+                System.Diagnostics.Debug.WriteLine("");
+        }
+
+        PropertyInfo GetPropertyInfo(Type type, string propertyName)
+        {
+            var typeInfo = type?.GetTypeInfo();
+            if (typeInfo == null)
+                return null;
+            var result = typeInfo.GetDeclaredProperty(propertyName);
+            if (result != null)
+                return result;
+            return GetPropertyInfo(typeInfo.BaseType, propertyName);
         }
 
         protected override void OnDetached()
